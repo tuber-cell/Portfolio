@@ -957,72 +957,84 @@
     </footer>
 
     <script>
-        // Mobile Menu Toggle
-        document.querySelector('.mobile-menu').addEventListener('click', function() {
-            document.querySelector('nav ul').classList.toggle('show');
-        });
-        
-        // Smooth Scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
+        // Mobile Menu Toggle - Fixed for Vercel
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const navMenu = document.querySelector('nav ul');
+            
+            if (mobileMenu && navMenu) {
+                mobileMenu.addEventListener('click', function() {
+                    navMenu.classList.toggle('show');
+                });
+            }
+            
+            // Smooth Scrolling - Fixed for Vercel
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
                     
-                    // Close mobile menu if open
-                    document.querySelector('nav ul').classList.remove('show');
-                }
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Close mobile menu if open
+                        if (navMenu) {
+                            navMenu.classList.remove('show');
+                        }
+                    }
+                });
             });
-        });
-        
-        // Plan Selection - Open Gmail
-        document.querySelectorAll('.select-plan').forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const plan = this.getAttribute('data-plan');
-                const price = this.getAttribute('data-price');
-                
-                // Create Gmail compose URL
-                const subject = `Website Development - ${plan} Plan (₹${price}) Inquiry`;
-                const body = `Hello Krishna,\n\nI am interested in your ${plan} Plan (₹${price}) for website development.\n\nPlease provide more details about:\n- Timeline for completion\n- Specific features included\n- Payment process\n- Any additional costs\n\nMy requirements are:\n[Please describe your website needs here]\n\nLooking forward to your response.\n\nBest regards,\n[Your Name]`;
-                
-                const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=krishnakamblekk6@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-                
-                // Open Gmail in a new tab
-                window.open(gmailUrl, '_blank');
+            
+            // Plan Selection - Open Gmail - Fixed for Vercel
+            document.querySelectorAll('.select-plan').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const plan = this.getAttribute('data-plan');
+                    const price = this.getAttribute('data-price');
+                    
+                    // Create Gmail compose URL
+                    const subject = `Website Development - ${plan} Plan (₹${price}) Inquiry`;
+                    const body = `Hello Krishna,\n\nI am interested in your ${plan} Plan (₹${price}) for website development.\n\nPlease provide more details about:\n- Timeline for completion\n- Specific features included\n- Payment process\n- Any additional costs\n\nMy requirements are:\n[Please describe your website needs here]\n\nLooking forward to your response.\n\nBest regards,\n[Your Name]`;
+                    
+                    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=krishnakamblekk6@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                    
+                    // Open Gmail in a new tab
+                    window.open(gmailUrl, '_blank');
+                });
             });
-        });
-        
-        // Contact Form Submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
             
-            // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
-            
-            // Create Gmail compose URL
-            const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=krishnakamblekk6@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
-            
-            // Open Gmail in a new tab
-            window.open(gmailUrl, '_blank');
-            
-            // Reset form
-            this.reset();
-            
-            // Show success message
-            alert('Thank you for your message! Gmail will open to send the message.');
+            // Contact Form Submission - Fixed for Vercel
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form values
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const subject = document.getElementById('subject').value;
+                    const message = document.getElementById('message').value;
+                    
+                    // Create Gmail compose URL
+                    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=krishnakamblekk6@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+                    
+                    // Open Gmail in a new tab
+                    window.open(gmailUrl, '_blank');
+                    
+                    // Reset form
+                    this.reset();
+                    
+                    // Show success message
+                    alert('Thank you for your message! Gmail will open to send the message.');
+                });
+            }
         });
     </script>
 </body>
