@@ -36,7 +36,6 @@
             padding: 0 20px;
         }
         
-        /* Header Styles */
         header {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
@@ -91,7 +90,6 @@
             cursor: pointer;
         }
         
-        /* Hero Section */
         .hero {
             padding: 5rem 0;
             background: linear-gradient(rgba(67, 97, 238, 0.9), rgba(58, 12, 163, 0.9)), url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
@@ -132,7 +130,6 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
         
-        /* About Section */
         .section {
             padding: 5rem 0;
         }
@@ -183,7 +180,6 @@
             display: block;
         }
         
-        /* Services Section */
         .services {
             background-color: var(--light);
         }
@@ -219,7 +215,6 @@
             color: var(--secondary);
         }
         
-        /* Pricing Section */
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -293,7 +288,6 @@
             text-align: center;
         }
         
-        /* Testimonials Section */
         .testimonials {
             background-color: var(--light);
         }
@@ -312,17 +306,16 @@
             position: relative;
         }
         
-        .testimonial-card:before {
-            content: """;
-            font-size: 5rem;
-            color: var(--primary);
-            opacity: 0.1;
-            position: absolute;
-            top: 10px;
-            left: 20px;
-            font-family: Georgia, serif;
-        }
-        
+.testimonial-card:before {
+    content: "\""; /* Fixed: Use escape character for quotation mark */
+    font-size: 5rem;
+    color: var(--primary);
+    opacity: 0.1;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-family: Georgia, serif;
+}        
         .testimonial-text {
             font-style: italic;
             margin-bottom: 1.5rem;
@@ -359,7 +352,6 @@
             font-size: 0.9rem;
         }
         
-        /* Portfolio Section */
         .portfolio {
             background-color: var(--light);
         }
@@ -410,7 +402,6 @@
             opacity: 1;
         }
         
-        /* Contact Section */
         .contact-content {
             display: flex;
             gap: 3rem;
@@ -476,7 +467,6 @@
             resize: vertical;
         }
         
-        /* Footer */
         footer {
             background: var(--dark);
             color: white;
@@ -550,7 +540,6 @@
             font-size: 0.9rem;
         }
         
-        /* Responsive Styles */
         @media (max-width: 992px) {
             .about-content, .contact-content {
                 flex-direction: column;
@@ -598,7 +587,6 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="container">
             <div class="header-content">
@@ -624,7 +612,6 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
             <h1>Professional Web Development Services</h1>
@@ -633,7 +620,6 @@
         </div>
     </section>
 
-    <!-- About Section -->
     <section class="section" id="about">
         <div class="container">
             <div class="section-title">
@@ -648,14 +634,12 @@
                     <p>When you work with me, you get a dedicated partner who understands your vision and brings it to life with technical expertise and creative solutions.</p>
                 </div>
                 <div class="about-image">
-                    <!-- Replace the src with your own image URL -->
                     <img src="Profile.png" alt="Krishna Kamble - Web Developer">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
     <section class="section services" id="services">
         <div class="container">
             <div class="section-title">
@@ -709,7 +693,6 @@
         </div>
     </section>
 
-    <!-- Pricing Section -->
     <section class="section" id="pricing">
         <div class="container">
             <div class="section-title">
@@ -780,7 +763,6 @@
         </div>
     </section>
 
-    <!-- Testimonials Section -->
     <section class="section testimonials" id="testimonials">
         <div class="container">
             <div class="section-title">
@@ -834,7 +816,6 @@
         </div>
     </section>
 
-    <!-- Portfolio Section -->
     <section class="section portfolio" id="portfolio">
         <div class="container">
             <div class="section-title">
@@ -867,7 +848,6 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section class="section" id="contact">
         <div class="container">
             <div class="section-title">
@@ -918,7 +898,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -957,10 +936,11 @@
     </footer>
 
     <script>
-        // Mobile Menu Toggle - Fixed for Vercel
+        // Simple JavaScript that should work on Vercel
         document.addEventListener('DOMContentLoaded', function() {
-            const mobileMenu = document.querySelector('.mobile-menu');
-            const navMenu = document.querySelector('nav ul');
+            // Mobile menu toggle
+            var mobileMenu = document.querySelector('.mobile-menu');
+            var navMenu = document.querySelector('nav ul');
             
             if (mobileMenu && navMenu) {
                 mobileMenu.addEventListener('click', function() {
@@ -968,16 +948,16 @@
                 });
             }
             
-            // Smooth Scrolling - Fixed for Vercel
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
+            // Smooth scrolling for anchor links
+            var anchorLinks = document.querySelectorAll('a[href^="#"]');
+            anchorLinks.forEach(function(link) {
+                link.addEventListener('click', function(e) {
                     e.preventDefault();
+                    var targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
                     
-                    const targetId = this.getAttribute('href');
-                    if(targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if(targetElement) {
+                    var targetElement = document.querySelector(targetId);
+                    if (targetElement) {
                         window.scrollTo({
                             top: targetElement.offsetTop - 80,
                             behavior: 'smooth'
@@ -991,47 +971,39 @@
                 });
             });
             
-            // Plan Selection - Open Gmail - Fixed for Vercel
-            document.querySelectorAll('.select-plan').forEach(button => {
+            // Plan selection - Open Gmail
+            var planButtons = document.querySelectorAll('.select-plan');
+            planButtons.forEach(function(button) {
                 button.addEventListener('click', function(e) {
                     e.preventDefault();
+                    var plan = this.getAttribute('data-plan');
+                    var price = this.getAttribute('data-price');
                     
-                    const plan = this.getAttribute('data-plan');
-                    const price = this.getAttribute('data-price');
+                    var subject = 'Website Development - ' + plan + ' Plan (₹' + price + ') Inquiry';
+                    var body = 'Hello Krishna,\n\nI am interested in your ' + plan + ' Plan (₹' + price + ') for website development.\n\nPlease provide more details about:\n- Timeline for completion\n- Specific features included\n- Payment process\n- Any additional costs\n\nMy requirements are:\n[Please describe your website needs here]\n\nLooking forward to your response.\n\nBest regards,\n[Your Name]';
                     
-                    // Create Gmail compose URL
-                    const subject = `Website Development - ${plan} Plan (₹${price}) Inquiry`;
-                    const body = `Hello Krishna,\n\nI am interested in your ${plan} Plan (₹${price}) for website development.\n\nPlease provide more details about:\n- Timeline for completion\n- Specific features included\n- Payment process\n- Any additional costs\n\nMy requirements are:\n[Please describe your website needs here]\n\nLooking forward to your response.\n\nBest regards,\n[Your Name]`;
+                    var gmailUrl = 'https://mail.google.com/mail/?view=cm&fs=1&to=krishnakamblekk6@gmail.com&su=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
                     
-                    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=krishnakamblekk6@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-                    
-                    // Open Gmail in a new tab
                     window.open(gmailUrl, '_blank');
                 });
             });
             
-            // Contact Form Submission - Fixed for Vercel
-            const contactForm = document.getElementById('contactForm');
+            // Contact form submission
+            var contactForm = document.getElementById('contactForm');
             if (contactForm) {
                 contactForm.addEventListener('submit', function(e) {
                     e.preventDefault();
                     
-                    // Get form values
-                    const name = document.getElementById('name').value;
-                    const email = document.getElementById('email').value;
-                    const subject = document.getElementById('subject').value;
-                    const message = document.getElementById('message').value;
+                    var name = document.getElementById('name').value;
+                    var email = document.getElementById('email').value;
+                    var subject = document.getElementById('subject').value;
+                    var message = document.getElementById('message').value;
                     
-                    // Create Gmail compose URL
-                    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=krishnakamblekk6@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+                    var gmailUrl = 'https://mail.google.com/mail/?view=cm&fs=1&to=krishnakamblekk6@gmail.com&su=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\nMessage:\n' + message);
                     
-                    // Open Gmail in a new tab
                     window.open(gmailUrl, '_blank');
                     
-                    // Reset form
                     this.reset();
-                    
-                    // Show success message
                     alert('Thank you for your message! Gmail will open to send the message.');
                 });
             }
